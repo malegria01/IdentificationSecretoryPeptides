@@ -59,7 +59,7 @@ sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	
 ...
 ```
 
-The output file [1.3_prediction_results_toxin.txt](https://doi.org/10.5281/zenodo.10971817) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) was used for processing SignalP output.
+The output file [1.3_prediction_results_toxin.txt](https://doi.org/10.5281/zenodo.10971817) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
 
 
 
