@@ -44,8 +44,11 @@ Signal peptides associated with toxins (GO:0003824) from the proteome of gram-ne
 signalp6 --fastafile [input.fasta] --organism other --output_dir [outputDir] --format txt --mode fasta
 ```
 
+The output file need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) was used for processing SignalP outputs.
 
 
+
+===
 
 Filtering and preparation of sequences.
 
