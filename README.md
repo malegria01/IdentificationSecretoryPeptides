@@ -25,22 +25,6 @@ This project utilizes the following datasets:
 
 The computational pipeline includes:
 
-## 1.- Protein Sequence Analysis
-    
-   Input: Proteome extracted from UniProt database [rawdata](https://doi.org/10.5281/zenodo.10971817) 
-   
-   1.1 This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the input file "1.1_Secretome_database_validated_EColi_GFFfile.gff". The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
-
-   1.2 The resulting [output file](/data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141 identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
-
-   1.3 Signal peptides associated with toxins (GO:0003824) from gram-negative bacteria proteome (taxonomy: Proteobacteria) were retrived from UniProt database. Both reviewed and hypothetical protein sequences were selected [1.3_toxin_sequences_INPUT.fasta](https://doi.org/10.5281/zenodo.10971817). Then SignalP  
-
-```
-    signalp6 --fastafile input.fasta --organism other --output_dir Results --format txt --mode fasta
-```
-
-##
-
 ## 1. Protein Sequence Analysis
 
 ### Input
@@ -56,9 +40,8 @@ The resulting [output file](/data/1.2_Input_for_uniprot_IDmapping.txt) contains 
 Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://doi.org/10.5281/zenodo.10971817). Subsequently, these sequences were processed using SignalP to predict signal peptides:
 
 ```bash
-signalp6 --fastafile input.fasta --organism other --output_dir Results --format txt --mode fasta
-
-
+signalp6 --fastafile [input.fasta] --organism other --output_dir [outputDir] --format txt --mode fasta
+```
 
 
 
