@@ -29,7 +29,9 @@ The computational pipeline includes:
     
    Input: Proteome extracted from UniProt database [rawdata](https://doi.org/10.5281/zenodo.10971817)
    
-   This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the inpur file. The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
+   1.1 This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the inpur file. The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
+
+   1.2 [Ouput file](/data/1.2_Input_for_uniprot_IDmapping.txt): Text file with a full dataset showing 141 proteins identified. Each entry was labeled with UniProt IDs and amino acids positions from SP. Every entry shows a protein with the format “P0AEG4[1-20]”; representing the protein ID and the SP amino acids positions in brackets 
    
 
 
