@@ -27,11 +27,17 @@ The computational pipeline includes:
 
 ## 1.- Protein Sequence Analysis
     
-   Input: Proteome extracted from UniProt database [rawdata](https://doi.org/10.5281/zenodo.10971817)
+   Input: Proteome extracted from UniProt database [rawdata](https://doi.org/10.5281/zenodo.10971817) 
    
-   1.1 This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the inpur file. The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
+   1.1 This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the input file "1.1_Secretome_database_validated_EColi_GFFfile.gff". The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
 
-   1.2 [Ouput file](/data/1.2_Input_for_uniprot_IDmapping.txt): Text file with a full dataset showing 141 proteins identified. Each entry was labeled with UniProt IDs and amino acids positions from SP. Every entry shows a protein with the format “P0AEG4[1-20]”; representing the protein ID and the SP amino acids positions in brackets 
+   1.2 [Ouput file](/data/1.2_Input_for_uniprot_IDmapping.txt): Text file with a full dataset showing 141 proteins identified. Each entry was labeled with UniProt IDs and amino acids positions from SP. Every entry shows a protein with the format “P0AEG4[1-20]”; representing the protein ID and the SP amino acids positions in brackets.
+
+   1.3 Signal peptides associated with toxins (GO:0003824) from gram-negative bacteria proteome (taxonomy: Proteobacteria) were retrived from UniProt database. Both reviewed and hypothetical protein sequences were selected- [1.3_toxin_sequences_INPUT.fasta](https://doi.org/10.5281/zenodo.10971817). 
+
+   ```
+    signalp6 --fastafile input.fasta --organism other --output_dir Results --format txt --mode fast
+    ```
    
 
 
