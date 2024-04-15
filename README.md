@@ -43,8 +43,20 @@ Signal peptides associated with toxins (GO:0003824) from the proteome of gram-ne
 ```bash
 signalp6 --fastafile [input.fasta] --organism other --output_dir [outputDir] --format txt --mode fasta
 ```
+In this case:
 
-The output file need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) was used for processing SignalP outputs.
+```bash
+signalp6 --fastafile [1.3_toxin_sequences_INPUT.fasta] --organism other --output_dir [Results_toxin/] --format txt --mode fasta
+```
+
+The output file [1.3_prediction_results_toxin.txt](https://doi.org/10.5281/zenodo.10971817) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) was used for processing SignalP output.
+
+The output file 1.3_prediction_results_toxin.txt includes predictions from SignalP, formatted as shown:
+
+sp|A0A0H3AIG7|VGRG1_VIBC3_Actin_cross-linking_toxin_VgrG1_OS=Vibrio_cholerae_se NO_SP 1.000057 0.000001 0.000000 0.000000 0.000000 0.000000
+sp|A0A0H3NK84|SSEK1_SALTS_Protein-arginine_N-acetylglucosaminyltransferase_SseK NO_SP 1.000040 0.000000 0.000000 0.000000 0.000000 0.000000
+...
+
 
 
 
