@@ -29,7 +29,7 @@ The computational pipeline includes:
     
    Input: Proteome extracted from UniProt database [rawdata](https://doi.org/10.5281/zenodo.10971817)
    
-   This [jupiter notebook](https://raw.githubusercontent.com/malegria01/IdentificationSecretoryPeptides/main/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb?token=GHSAT0AAAAAACPW7EB754QQPT47IXBHW2BIZQ4PVPQ) shows the steps to process the inpur file. The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
+   This [jupiter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) shows the steps to process the inpur file. The algorithm allowed filtering only experimentally validated SP -bearing proteins, reported as involved in cell secretion by the Sec-pathway using Python.
    
 
 
