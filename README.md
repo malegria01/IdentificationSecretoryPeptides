@@ -24,7 +24,7 @@ This project utilizes the following datasets:
 
 ## Methodology
 
-The computational pipeline includes:
+The computational protocol / pipeline includes:
 
 ## 1. Protein Sequence Analysis
 
