@@ -55,6 +55,7 @@ The output file 1.3_prediction_results_toxin.txt includes predictions from Signa
 ```
 sp|A0A0H3AIG7|VGRG1_VIBC3_Actin_cross-linking_toxin_VgrG1_OS=Vibrio_cholerae_se NO_SP 1.000057 0.000001 0.000000 0.000000 0.000000 0.000000
 sp|A0A0H3NK84|SSEK1_SALTS_Protein-arginine_N-acetylglucosaminyltransferase_SseK NO_SP 1.000040 0.000000 0.000000 0.000000 0.000000 0.000000
+sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	SP	0.024348	0.974034	0.000681	0.000438	0.000238	0.000230	CS pos: 32-33. Pr: 0.8066
 ...
 ```
 
@@ -79,6 +80,10 @@ If you use this data or the computational pipeline in your research, please cite
 ´´´
 Author(s), (Year). Title of the study. Journal/Publisher, [DOI/link to the publication]
 ´´´
+
+## Contributing
+
+Contributions to this repository are welcome. Please fork the repository and submit pull requests with your proposed changes.
 
 ## License
 
