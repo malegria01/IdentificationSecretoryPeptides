@@ -35,9 +35,9 @@ The computational pipeline includes:
 
    1.3 Signal peptides associated with toxins (GO:0003824) from gram-negative bacteria proteome (taxonomy: Proteobacteria) were retrived from UniProt database. Both reviewed and hypothetical protein sequences were selected- [1.3_toxin_sequences_INPUT.fasta](https://doi.org/10.5281/zenodo.10971817). 
 
-   ```
-    signalp6 --fastafile input.fasta --organism other --output_dir Results --format txt --mode fast
-    ```
+```
+    signalp6 --fastafile input.fasta --organism other --output_dir Results --format txt --mode fasta
+```
    
 
 
