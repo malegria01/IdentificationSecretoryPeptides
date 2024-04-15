@@ -2,7 +2,7 @@
 This repository is part of the paper: ***"In silico identification of novel secretory peptides from bacteria proteome"***
 
 
-# Computational Analysis of Signal Peptides Interacting with SecA in Escherichia coli
+# Computational Analysis of Signal Peptides Interacting with SecA in *Escherichia coli*
 
 ## Project Description
 This repository contains the computational pipeline and data used for the identification and analysis of novel signal peptides (SPs) that interact with the SecA protein in Escherichia coli, as detailed in our study. This research explores the use of various bioinformatic tools to predict and model interactions between SPs and the Sec-pathway, with a focus on enhancing the efficiency of recombinant protein secretion.
