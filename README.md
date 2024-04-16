@@ -37,7 +37,8 @@ This [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionfor
 ### 1.2 Output File
 The resulting [output file](/data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141XX?? identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
 
-Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora*. [Supplementary Table 1](/outputs/SupplementaryTable1_Signal peptides with experimental evidence.xlsx)
+Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora* : [Supplementary Table 1](/outputs/SupplementaryTable1_Signal_peptides_with experimental_evidence.xlsx) 
+
 
 ### 1.3 Retrieval and Analysis of Toxin Signal Peptides
 Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://doi.org/10.5281/zenodo.10971817). Subsequently, these sequences were processed using SignalP to predict signal peptides:
