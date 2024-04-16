@@ -41,6 +41,9 @@ Finally, the control SP database stored 145 sequences, experimentally validated 
 
 
 ### 1.3 Retrieval and Analysis of Toxin Signal Peptides
+
+The toxin SP collection from gram-negative microbes is now being created following this protocol:"
+
 Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://doi.org/10.5281/zenodo.10971817). Subsequently, these sequences were processed using SignalP to predict signal peptides:
 
 ```bash
@@ -63,6 +66,9 @@ sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	
 ```
 
 The output file [1.3_prediction_results_toxin.txt](https://doi.org/10.5281/zenodo.10971817) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
+
+From the prediction, 917 newly reported signal peptide candidates were identified, most of which exhibit a high SignalP predicted probability.
+
 
 
 
