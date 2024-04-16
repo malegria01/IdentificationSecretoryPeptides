@@ -37,7 +37,7 @@ This [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionfor
 ### 1.2 Output File
 The resulting [output file](/data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141XX?? identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
 
-Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx) 
+Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx). The Control SP database contains a total of 146 sequences.
 
 
 ### 1.3 Retrieval and Analysis of Toxin Signal Peptides
@@ -71,8 +71,24 @@ From the prediction, [917 newly reported signal peptide](/outputs/SupplementaryT
 
 
 
-
 ## 2. Signal peptide modeling
+
+In this step, AlphaFold was used on the LatchBio platform (https://latch.bio/) to predict the structure of signal peptides. However, AlphaFold can also be used locally or in any other setting that the researcher deems appropriate.
+
+The access to the PDB files for the control SP and the 917 newly reported SP is available [here](https://doi.org/10.5281/zenodo.10971817).
+
+### 2.1.	Secondary structure of signal peptides
+
+The STRIDE algorithm was used to analyze the secondary structure signal peptide models
+
+
+## 3. SecA-Signal peptide complex prediction using HADDOCK
+
+### 3.1.	Selection of representative molecular docking models
+
+
+## 4.	Interface analysis of SecA/SP molecular docking models (with MAPIYA).
+
 
 
 
