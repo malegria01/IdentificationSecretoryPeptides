@@ -79,7 +79,9 @@ The access to the PDB files for the control SP and the 917 newly reported SP is 
 
 ### 2.1.	Secondary structure of signal peptides
 
-The STRIDE algorithm was used to analyze the secondary structure signal peptide models
+The STRIDE algorithm was used to analyze the secondary structure signal peptide models. In the case of the SP group, we analyzed the 28,828 residues from 917 PDB models in our database. 
+
+The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
 
 ## 3. SecA-Signal peptide complex prediction using HADDOCK
