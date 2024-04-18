@@ -83,7 +83,7 @@ The STRIDE algorithm was used to analyze the secondary structure signal peptide 
 
 The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
-Protein modeling and features of toxin signal peptide database modeled by AlphaFold.
+**Protein modeling and features of toxin signal peptide database modeled by AlphaFold.**
 
 ![Fig2](/data/Fig2.JPG)
 
