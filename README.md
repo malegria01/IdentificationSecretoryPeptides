@@ -83,8 +83,11 @@ The STRIDE algorithm was used to analyze the secondary structure signal peptide 
 
 The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
+Protein modeling and features of toxin signal peptide database modeled by AlphaFold.
+
 ![Fig2](/data/Fig2.JPG)
 
+A) The structure of the signal peptides from A0A0M2KG05 and A0A2K8QM57 proteins is depicted. The accuracy predictions in each amino acid is colored according to the pLDDT score. Central regions of the peptide’s models exhibit a higher prediction accuracy (blue or sky-blue colored). In contrast, outer regions in yellow and oranga are characterized by a lower prediction accuracy. The central region shows alpha helix structures while the outer regions have a disordered linear structure. B) The plot depicts quality proportion from 28,828 residues from the toxin SP database in terms of pLDDT score (very high, confidence, low and very low) C) The secondary structures are shown (helix, coil, turn and beta), the plot represents ratios from 28,828 residues from toxin signal peptide database. 
 
 ## 3. SecA-Signal peptide complex prediction using HADDOCK
 
