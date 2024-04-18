@@ -83,7 +83,7 @@ The STRIDE algorithm was used to analyze the secondary structure signal peptide 
 
 The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
-![Fig2](/data/SFig2.JPG)
+![Fig2](/data/Fig2.JPG)
 
 
 ## 3. SecA-Signal peptide complex prediction using HADDOCK
