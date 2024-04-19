@@ -91,6 +91,9 @@ A) The structure of the signal peptides from A0A0M2KG05 and A0A2K8QM57 proteins 
 
 ## 3. SecA-Signal peptide complex prediction using HADDOCK
 
+In this section, interactions between SecA and SP were individually analyzed using the HADDOCK web server, which generated 10 clusters with 4 docking models each. The protocol can be followed in this [Jupyter notebook]().
+
+
 ### 3.1.	Selection of representative molecular docking models
 
 
