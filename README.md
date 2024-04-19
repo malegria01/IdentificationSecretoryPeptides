@@ -98,7 +98,7 @@ In this section, interactions between SecA and SP were individually analyzed usi
 
  The protocol can be followed in this [Jupyter notebook](/notebooks/3.1_Compute_IRMSD_from_HADDOCKfiles.ipynb).
 
- The outpur file Supplementary Table 3 Haddock score and IRMSD of docking models is [here](/outputs/3.1_IRMSD_HADDOCKscore_tableresults.xlsx)
+ The output file Supplementary Table 3 Haddock score and IRMSD of docking models is [here](/outputs/3.1_IRMSD_HADDOCKscore_tableresults.xlsx)
 
 ## 4.	Interface analysis of SecA/SP molecular docking models (with MAPIYA).
 
