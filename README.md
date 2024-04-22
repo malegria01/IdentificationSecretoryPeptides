@@ -102,7 +102,7 @@ In this section, interactions between SecA and SP were individually analyzed usi
 
 ## 4.	Interface analysis of SecA/SP molecular docking models (with MAPIYA).
 
-
+In this step, we used MAPIYA. MAPIYA is a web server designed for analyzing the molecular structures of proteins and molecular complexes. It was employed to identify hydrogen bonds, salt bridges, and hydrophobic interactions (Badaczewska-Dawid et al., 2022). We registered only the interactions that are present in at least 3 models from the best cluster.
 
 
 ===
