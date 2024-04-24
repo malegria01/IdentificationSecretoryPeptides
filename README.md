@@ -108,7 +108,7 @@ SecA/signal peptide clusters used as an input for MAPIYA can be found [here](dat
 
 ## 5. Analysis of per-residue energy contribution
 
-Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy paramater is calculated for each amino acidd from the complex, from a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
+Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy paramater is calculated for each amino acidd from the SecA/SP complex, using a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
 
 SecA/signal peptide clusters used as an input for PyDockEneRes can be found [here](data/4_5_Input_clusters_for_PyDockEneRes_and_MAPIYA). The output file Supplementary Table 4 Energy contribution from each signal peptide in the SecA/SP interface is [here](outputs/Supplementary_Table4.xlsx)
 
