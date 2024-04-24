@@ -104,6 +104,16 @@ In this section, interactions between SecA and SP were individually analyzed usi
 
 In this step, we used MAPIYA. MAPIYA is a web server designed for analyzing the molecular structures of proteins and molecular complexes. It was employed to identify hydrogen bonds, salt bridges, and hydrophobic interactions (Badaczewska-Dawid et al., 2022). We registered only the interactions that are present in at least 3 models from the best cluster.
 
+SecA/signal peptide clusters used as an input for MAPIYA can be found [here](). The output file Table 1 MAPIYA results of interface contacts from seven SecA:signal peptide complexes is [here](...)
+
+## 5. Analysis of per-residue energy contribution
+
+Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy paramater is calculated for each amino acidd from the complex, from a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
+
+SecA/signal peptide clusters used as an input for PyDockEneRes can be found [here](). The output file Supplementary Table 4 Energy contribution from each signal peptide in the SecA/SP interface is [here](...)
+
+
+We followed the same steps to compute the energy contribution from peptide residues in the PDB:2VDA structure. The latter results were used as a reference for the SecA/SP results. This output file Supplementary Table 5 can be found [here](...).
 
 ===
 
