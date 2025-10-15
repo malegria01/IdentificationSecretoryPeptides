@@ -22,7 +22,7 @@ Proteome extracted from the UniProt database. Access the data [here](https://doi
 This [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) demonstrates the steps to process the input file `1.1_Secretome_database_validated_EColi_GFFfile.gff`. The algorithm filters out only experimentally validated SP-bearing proteins, reported as involved in cell secretion via the Sec-pathway, using Python.
 
 ### 1.2 Output File
-The resulting [output file](data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141XX?? identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
+The resulting [output file](data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141 identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
 
 Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx). The Control SP database contains a total of 146 sequences.
 
