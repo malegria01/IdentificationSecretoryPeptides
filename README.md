@@ -16,7 +16,7 @@ The computational protocol / pipeline includes:
 ## 1. Protein Sequence Analysis
 
 ### Input
-Proteome extracted from the UniProt database. Access the data [here](https://doi.org/10.5281/zenodo.10971817).
+Proteome extracted from the UniProt database (GFF file, accessed in 2023).
 
 ### 1.1 Protein Filtering Process
 This [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionformatting.ipynb) demonstrates the steps to process the input file `1.1_Secretome_database_validated_EColi_GFFfile.gff`. The algorithm filters out only experimentally validated SP-bearing proteins, reported as involved in cell secretion via the Sec-pathway, using Python.
@@ -31,7 +31,7 @@ Finally, the control SP database stored 145 sequences, experimentally validated 
 
 The toxin SP collection from gram-negative microbes is now being created following this protocol:"
 
-Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://doi.org/10.5281/zenodo.10971817). Subsequently, these sequences were processed using SignalP to predict signal peptides:
+Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0). Subsequently, these sequences were processed using SignalP to predict signal peptides:
 
 ```bash
 signalp6 --fastafile [input.fasta] --organism other --output_dir [outputDir] --format txt --mode fasta
@@ -52,7 +52,7 @@ sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	
 ...
 ```
 
-The output file [1.3_prediction_results_toxin.txt]([https://doi.org/10.5281/zenodo.10971817](https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0)) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
+The output file [1.3_prediction_results_toxin.txt]((https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0)) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
 
 From the prediction, [917 newly reported signal peptide](/outputs/SupplementaryTable2.xlsx) candidates were identified, most of which exhibit a high SignalP predicted probability.
 
