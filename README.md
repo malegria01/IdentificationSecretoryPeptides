@@ -1,5 +1,5 @@
 # Identification Secretory Peptides
-This repository is part of the paper: ***"In silico identification of novel secretory peptides from bacteria proteome"***
+This repository is part of the paper: ***"In silico identification of novel secretory peptides from bacterial proteome"***
 
 
 # Computational Analysis of Signal Peptides Interacting with SecA in *Escherichia coli*
@@ -11,7 +11,7 @@ This repository contains the computational pipeline and data used for the identi
 
 ## Methodology
 
-The computational protocol / pipeline includes:
+The computational protocol/pipeline includes:
 
 ## 1. Protein Sequence Analysis
 
@@ -24,12 +24,12 @@ This [Jupyter notebook](/notebooks/1.2_Proteome_analysis_Sec_pathway_positionfor
 ### 1.2 Output File
 The resulting [output file](data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141 identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
 
-Finally, the control SP database stored 145 sequences, experimentally validated from *Escherichia coli* proteome (UniProt). The constructed collection of SPs included the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx). The Control SP database contains a total of 146 sequences.
+Finally, the control SP database stored 145 sequences experimentally validated from the *Escherichia coli* proteome (UniProt). Also, the constructed collection of SPs includes the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx). All in all, the Control SP database contains a total of 146 sequences.
 
 
 ### 1.3 Retrieval and Analysis of Toxin Signal Peptides
 
-The toxin SP collection from gram-negative microbes is now being created following this protocol:"
+The toxin SP collection from gram-negative microbes is now created following this protocol:"
 
 Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0). Subsequently, these sequences were processed using SignalP to predict signal peptides:
 
@@ -52,7 +52,7 @@ sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	
 ...
 ```
 
-The output file [1.3_prediction_results_toxin.txt]((https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0)) need to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
+The output file [1.3_prediction_results_toxin.txt]((https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0)) needs to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
 
 From the prediction, [917 newly reported signal peptide](/outputs/SupplementaryTable2.xlsx) candidates were identified, most of which exhibit a high SignalP predicted probability.
 
@@ -66,7 +66,7 @@ The access to the PDB files for the control SP and the 917 newly reported SP is 
 
 ### 2.1.	Secondary structure of signal peptides
 
-The STRIDE algorithm was used to analyze the secondary structure signal peptide models. In the case of the SP group, we analyzed the 28,828 residues from 917 PDB models in our database. 
+The STRIDE algorithm was used to analyze the secondary structure signal peptide models. For the SP group, we analyzed 28,828 residues from 917 PDB models in our database. 
 
 The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
@@ -74,7 +74,7 @@ The output data is [here](https://doi.org/10.5281/zenodo.10971817).
 
 ![Fig2](/data/Fig2.JPG)
 
-A) The structure of the signal peptides from A0A0M2KG05 and A0A2K8QM57 proteins is depicted. The accuracy predictions in each amino acid is colored according to the pLDDT score. Central regions of the peptide’s models exhibit a higher prediction accuracy (blue or sky-blue colored). In contrast, outer regions in yellow and oranga are characterized by a lower prediction accuracy. The central region shows alpha helix structures while the outer regions have a disordered linear structure. B) The plot depicts quality proportion from 28,828 residues from the toxin SP database in terms of pLDDT score (very high, confidence, low and very low) C) The secondary structures are shown (helix, coil, turn and beta), the plot represents ratios from 28,828 residues from toxin signal peptide database. 
+A) The structure of the signal peptides from A0A0M2KG05 and A0A2K8QM57 proteins is depicted. The accuracy predictions for each amino acid are colored according to the pLDDT score. Central regions of the peptide’s models exhibit a higher prediction accuracy (blue or sky-blue colored). In contrast, outer regions in yellow and oranga are characterized by a lower prediction accuracy. The central region shows alpha helix structures, while the outer regions have a disordered linear structure. B) The plot depicts quality proportion from 28,828 residues from the toxin SP database in terms of pLDDT score (very high, confidence, low, and very low). C) The secondary structures are shown (helix, coil, turn, and beta), and the plot represents ratios from 28,828 residues from the toxin signal peptide database. 
 
 ## 3. SecA-Signal peptide complex prediction using HADDOCK
 
@@ -95,7 +95,7 @@ SecA/signal peptide clusters used as an input for MAPIYA can be found [here](dat
 
 ## 5. Analysis of per-residue energy contribution
 
-Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy paramater is calculated for each amino acidd from the SecA/SP complex, using a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
+Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy parameter is calculated for each amino acid from the SecA/SP complex, using a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
 
 SecA/signal peptide clusters used as an input for PyDockEneRes can be found [here](data/4_5_Input_clusters_for_PyDockEneRes_and_MAPIYA). The output file Supplementary Table 4 Energy contribution from each signal peptide in the SecA/SP interface is [here](outputs/Supplementary_Table4.xlsx)
 
