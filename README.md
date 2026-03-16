@@ -1,112 +1,188 @@
-# Identification Secretory Peptides
-This repository is part of the paper: ***"In silico identification of novel secretory peptides from bacterial proteome"***
+# Computational Pipeline for Identification of Secretory Peptides Interacting with SecA in *Escherichia coli*
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Computational Analysis of Signal Peptides Interacting with SecA in *Escherichia coli*
+> **"Computational pipeline for in silico identification of novel secretory peptides interacting with SecA in *Escherichia coli*"**
+> Jose M. Cisneros Mandujano, Arturo Nickolay Rojas-Tavara, Melissa Alegría-Arcos, Alberto Jesus Donayre-Torres
+> *(journal and DOI to be added upon publication)*
 
-## Project Description
-This repository contains the computational pipeline and data used for the identification and analysis of novel signal peptides (SPs) that interact with the SecA protein in Escherichia coli, as detailed in our study. This research explores the use of various bioinformatic tools to predict and model interactions between SPs and the Sec-pathway, with a focus on enhancing the efficiency of recombinant protein secretion.
+---
 
+## Overview
 
+This repository contains the full computational pipeline, notebooks, and results for the identification and analysis of novel signal peptides (SPs) that interact with the SecA protein in *Escherichia coli*. The pipeline integrates protein sequence analysis, structural modeling with AlphaFold, molecular docking with HADDOCK, and binding interface characterization to identify and rank SP candidates for recombinant protein secretion applications.
 
-## Methodology
+```
+Stage 1                  Stage 2                Stage 3               Stage 4
+──────────────────────   ────────────────────   ───────────────────   ──────────────────────
+Protein Sequence      →  Signal Peptide      →  SecA/SP Docking   →  Interface Analysis
+Analysis                 Structural Modeling     (HADDOCK)             (MAPIYA +
+(UniProt + SignalP)      (AlphaFold + STRIDE)                          PyDockEneRes)
+```
 
-The computational protocol/pipeline includes:
+![Pipeline](data/Figure1.jpg)
 
-## 1. Protein Sequence Analysis
+---
 
-### Input
-Proteome extracted from the UniProt database (GFF file, accessed in 2023).
+## Repository Structure
 
-### 1.1 Protein Filtering Process
-This [Jupyter notebook](/notebooks/1_Proteome_analysis_Sec_pathway_positionformatting.ipynb) demonstrates the steps to process the input file `1.1_Secretome_database_validated_EColi_GFFfile.gff`. The algorithm filters out only experimentally validated SP-bearing proteins, reported as involved in cell secretion via the Sec-pathway, using Python.
+```
+├── notebooks/    Jupyter notebooks for each computational stage
+├── data/         Input files and figures
+├── outputs/      Supplementary tables and result files
+```
 
-### 1.2 Output File
-The resulting [output file](data/1.2_Input_for_uniprot_IDmapping.txt) contains a dataset listing 141 identified proteins. Each entry is labeled with UniProt IDs and the amino acid positions of SPs. The format for each entry is `P0AEG4[1-20]`, where `P0AEG4` is the protein ID and `[1-20]` indicates the SP amino acid positions in brackets.
+---
 
-Finally, the control SP database stored 145 sequences experimentally validated from the *Escherichia coli* proteome (UniProt). Also, the constructed collection of SPs includes the signal peptide PelB from *Erwinia carotovora* [Supplementary Table 1](/outputs/SupplementaryTable1_SignalPeptides_with_experimental_evidence.xlsx). All in all, the Control SP database contains a total of 146 sequences.
+## Stage 1 — Protein Sequence Analysis
 
+### 1a. Control SP Database (*E. coli*)
 
-### 1.3 Retrieval and Analysis of Toxin Signal Peptides
+**Input:** Full *E. coli* proteome from UniProt (GFF format, `taxonomy_id:562`, accessed 2024).
+Reviewed UniProtKB/Swiss-Prot entries were filtered for experimentally validated Sec-pathway signal peptides (ECO:0000269), excluding Tat-dependent proteins.
 
-The toxin SP collection from gram-negative microbes is now created following this protocol:"
+> The full GFF file (49 MB) is available at Zenodo: [https://doi.org/10.5281/zenodo.10971817](https://doi.org/10.5281/zenodo.10971817)
 
-Signal peptides associated with toxins (GO:0003824) from the proteome of gram-negative bacteria (taxonomy: Proteobacteria) were retrieved from the UniProt database, including both reviewed and hypothetical protein sequences. Access the sequences [here](https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0). Subsequently, these sequences were processed using SignalP to predict signal peptides:
+**Notebook:** [`Stage1a_Control_SP_Extraction.ipynb`](notebooks/Stage1a_Control_SP_Extraction.ipynb)
+
+**Output:** [`data/1.2_Input_for_uniprot_IDmapping.txt`](data/1.2_Input_for_uniprot_IDmapping.txt) — 145 UniProt IDs with SP coordinates (e.g. `P0AEG4[1-20]`). Upload to the [UniProt ID Mapping tool](https://www.uniprot.org/id-mapping) to retrieve full SP sequences in FASTA format.
+
+The **Control SP database contains 146 sequences**: 145 experimentally validated SPs from *E. coli* + PelB from *Erwinia carotovora* (positive control). Full list: [Supplementary Table 1](outputs/SupplementaryTable1.xlsx).
+
+### 1b. Toxin SP Database (Gram-negative bacteria)
+
+Signal peptides from toxin proteins (GO:0003824) were retrieved from the gram-negative bacteria proteome (taxonomy: Proteobacteria) from UniProt. Both reviewed and hypothetical sequences were included.
+
+**Input sequences:** [`data/toxin_sequences.fasta`](data/toxin_sequences.fasta)
+
+**SignalP 6.0** was run to predict signal peptides:
 
 ```bash
-signalp6 --fastafile [input.fasta] --organism other --output_dir [outputDir] --format txt --mode fasta
+signalp6 --fastafile toxin_sequences.fasta \
+          --organism other \
+          --output_dir Results_toxin/ \
+          --format txt \
+          --mode fasta
 ```
-In this case:
+
+SignalP outputs ([`data/1.3_prediction_results_toxin.txt`](data/1.3_prediction_results_toxin.txt), [`data/1.3_signalP_output.gff3`](data/1.3_signalP_output.gff3); full JSON at Zenodo) were processed with:
+
+**Notebook:** [`Stage1b_Toxin_SP_Database_SignalP.ipynb`](notebooks/Stage1b_Toxin_SP_Database_SignalP.ipynb)
+
+**Output:** **917 signal peptide candidates**. Full list: [Supplementary Table 2](outputs/SupplementaryTable2.xlsx).
+
+---
+
+## Stage 2 — Signal Peptide Structural Modeling
+
+### AlphaFold Modeling
+
+All 1,063 SP sequences (146 control + 917 toxin) were modeled using **AlphaFold** via [LatchBio](https://latch.bio/). Each structure was exported in PDB format with per-residue pLDDT confidence scores.
+
+> All 1,063 PDB models are deposited at Zenodo: [https://doi.org/10.5281/zenodo.10971817](https://doi.org/10.5281/zenodo.10971817)
+
+### Secondary Structure Analysis (STRIDE)
+
+**STRIDE** was applied to all SP PDB models to assign secondary structure per residue (helix, sheet, coil, turn). A total of **28,828 residues** from 917 toxin PDB models were analyzed; 65.6% showed helical conformation.
+
+**Notebook:** [`Stage2_AlphaFold_pLDDT_STRIDE.ipynb`](notebooks/Stage2_AlphaFold_pLDDT_STRIDE.ipynb)
+
+> STRIDE output data available at Zenodo.
+
+![Figure 2](data/Figure2.JPG)
+
+---
+
+## Stage 3 — SecA/SP Complex Prediction using HADDOCK
+
+Interactions between SecA and each SP were predicted using **HADDOCK 2.4** ([wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4/)).
+
+**Receptor:** NMR structure of SecA (PDB: **2VDA**, chain A).
+**Active site residues (AIRs):** Ile225, Met235, Val239, Ile291, Met292, Ile304, Met305, Leu306, Val310, Leu372, Leu774, Met810, Met814.
+
+Interface RMSD (iRMSD) vs. PDB:2VDA was computed using DockQ (v1.0) to select the best cluster per peptide.
+
+**Notebook:** [`Stage3_HADDOCK_iRMSD.ipynb`](notebooks/Stage3_HADDOCK_iRMSD.ipynb)
+
+**Output:** [Supplementary Table 3](outputs/SupplementaryTable3.xlsx) — HADDOCK scores and iRMSD for all docking models. Mean HADDOCK scores for best clusters ranged from **−184.9 to −29.9**.
+
+---
+
+## Stage 4 — Interface Analysis (MAPIYA + PyDockEneRes)
+
+This stage was performed manually using web servers. Input PDB cluster files for 7 representative SPs (P28031, A0A0E1NLZ9, Q3YL96, DsbA, OmpA, PelB + PDB:2VDA reference) are available at Zenodo.
+
+### 4a. Interface Contact Analysis (MAPIYA)
+
+**MAPIYA** ([mapiya.lcbio.pl](https://mapiya.lcbio.pl/)) identified hydrogen bonds, salt bridges, and hydrophobic interactions in SecA/SP complexes. Only interactions present in ≥ 3 models from the best cluster were recorded.
+
+**Output:** [Table 1](outputs/Table1_MAPIYA_results.xlsx) — MAPIYA interface contacts.
+
+### 4b. Per-Residue Energy Contribution (PyDockEneRes)
+
+**PyDockEneRes** ([life.bsc.es/pid/pydockeneres](https://life.bsc.es/pid/pydockeneres)) computed per-residue energy contributions (electrostatic + van der Waals + desolvation) within SecA/SP binding interfaces. Mean energy values were calculated across all models in each best cluster. The same analysis was applied to PDB:2VDA as a benchmark reference.
+
+**Outputs:**
+- [Supplementary Table 4](outputs/SupplementaryTable4.xlsx) — Per-residue energy contribution for 7 representative SecA/SP complexes
+- [Supplementary Table 5](outputs/SupplementaryTable5.xlsx) — Per-residue energy contribution for PDB:2VDA reference
+
+---
+
+## Supplementary Tables
+
+| Table | File | Description |
+|-------|------|-------------|
+| Table 1 | [Table1_MAPIYA_results.xlsx](outputs/Table1_MAPIYA_results.xlsx) | MAPIYA interface contacts — 7 representative SPs |
+| Suppl. Table 1 | [SupplementaryTable1.xlsx](outputs/SupplementaryTable1.xlsx) | Control SP sequences and UniProt IDs (146 total) |
+| Suppl. Table 2 | [SupplementaryTable2.xlsx](outputs/SupplementaryTable2.xlsx) | Toxin SP candidates — SignalP likelihood, sequences, UniProt IDs (917 total) |
+| Suppl. Table 3 | [SupplementaryTable3.xlsx](outputs/SupplementaryTable3.xlsx) | HADDOCK score and iRMSD for all docking models |
+| Suppl. Table 4 | [SupplementaryTable4.xlsx](outputs/SupplementaryTable4.xlsx) | Per-residue energy contribution — 7 SecA/SP complexes |
+| Suppl. Table 5 | [SupplementaryTable5.xlsx](outputs/SupplementaryTable5.xlsx) | Per-residue energy contribution — PDB:2VDA reference |
+
+---
+
+## Setup & Reproducibility
 
 ```bash
-signalp6 --fastafile [1.3_toxin_sequences_INPUT.fasta] --organism other --output_dir [Results_toxin/] --format txt --mode fasta
+conda env create -f environment.yml
+conda activate signal_peptides_env
+jupyter notebook
 ```
 
+### External Tools (web servers — no local installation required)
 
-The output file 1.3_prediction_results_toxin.txt includes predictions from SignalP, formatted as shown:
+| Tool | Version | URL |
+|------|---------|-----|
+| SignalP | 6.0 | [services.healthtech.dtu.dk](https://services.healthtech.dtu.dk/signalp) |
+| AlphaFold / LatchBio | Web server | [latch.bio](https://latch.bio) |
+| STRIDE | — | [webclu.bio.wzw.tum.de/stride](http://webclu.bio.wzw.tum.de/stride/) |
+| HADDOCK | 2.4 | [wenmr.science.uu.nl/haddock2.4](https://wenmr.science.uu.nl/haddock2.4/) |
+| MAPIYA | — | [mapiya.lcbio.pl](https://mapiya.lcbio.pl/) |
+| PyDockEneRes | — | [life.bsc.es/pid/pydockeneres](https://life.bsc.es/pid/pydockeneres) |
 
-```
-sp|A0A0H3AIG7|VGRG1_VIBC3_Actin_cross-linking_toxin_VgrG1_OS=Vibrio_cholerae_se NO_SP 1.000057 0.000001 0.000000 0.000000 0.000000 0.000000
-sp|A0A0H3NK84|SSEK1_SALTS_Protein-arginine_N-acetylglucosaminyltransferase_SseK NO_SP 1.000040 0.000000 0.000000 0.000000 0.000000 0.000000
-sp|A0A1S4NYE3|CDIA_ECOST_tRNA_nuclease_CdiA_OS=Escherichia_coli_(strain_STEC_O3	SP	0.024348	0.974034	0.000681	0.000438	0.000238	0.000230	CS pos: 32-33. Pr: 0.8066
-...
-```
+---
 
-The output file [1.3_prediction_results_toxin.txt]((https://www.dropbox.com/scl/fi/tnfzn8st611xdv26vs9c5/1.3_toxin_sequences_INPUT.fasta?rlkey=85fmeqjw1l51uh4r67dc1ee49&dl=0)) needs to be processed to extract and format useful data for further analysis. The [Jupyter notebook](/notebooks/1.3_ToxinPeptideDatabase_Generation_fromSignalP.ipynb) was used for processing SignalP output.
+## Data Availability
 
-From the prediction, [917 newly reported signal peptide](/outputs/SupplementaryTable2.xlsx) candidates were identified, most of which exhibit a high SignalP predicted probability.
+Large files (PDB models, STRIDE results, HADDOCK cluster PDBs, full GFF, SignalP JSON) are deposited at Zenodo:
 
+> Alegría-Arcos, M. et al. (2024). *Computational pipeline for identification of secretory peptides interacting with SecA in E. coli* [Data set]. Zenodo.
+> [https://doi.org/10.5281/zenodo.10971817](https://doi.org/10.5281/zenodo.10971817)
 
+---
 
-## 2. Signal peptide modeling
+## Citation
 
-In this step, AlphaFold was used on the LatchBio platform (https://latch.bio/) to predict the structure of signal peptides. However, AlphaFold can also be used locally or in any other setting that the researcher deems appropriate.
+> Cisneros Mandujano JM, Rojas-Tavara AN, Alegría-Arcos M, Donayre-Torres AJ.
+> *Computational pipeline for in silico identification of novel secretory peptides interacting with SecA in Escherichia coli.* (2026).
 
-The access to the PDB files for the control SP and the 917 newly reported SP is available [here](https://doi.org/10.5281/zenodo.10971817).
-
-### 2.1.	Secondary structure of signal peptides
-
-The STRIDE algorithm was used to analyze the secondary structure signal peptide models. For the SP group, we analyzed 28,828 residues from 917 PDB models in our database. 
-
-The output data is [here](https://doi.org/10.5281/zenodo.10971817).
-
-**Protein modeling and features of toxin signal peptide database modeled by AlphaFold.**
-
-![Fig2](/data/Fig2.JPG)
-
-A) The structure of the signal peptides from A0A0M2KG05 and A0A2K8QM57 proteins is depicted. The accuracy predictions for each amino acid are colored according to the pLDDT score. Central regions of the peptide’s models exhibit a higher prediction accuracy (blue or sky-blue colored). In contrast, outer regions in yellow and oranga are characterized by a lower prediction accuracy. The central region shows alpha helix structures, while the outer regions have a disordered linear structure. B) The plot depicts quality proportion from 28,828 residues from the toxin SP database in terms of pLDDT score (very high, confidence, low, and very low). C) The secondary structures are shown (helix, coil, turn, and beta), and the plot represents ratios from 28,828 residues from the toxin signal peptide database. 
-
-## 3. SecA-Signal peptide complex prediction using HADDOCK
-
-In this section, interactions between SecA and SP were individually analyzed using the HADDOCK web server, which generated 10 clusters with 4 docking models each.
-
-
-### 3.1.	Selection of representative molecular docking models
-
- The protocol can be followed in this [Jupyter notebook](/notebooks/3.1_Compute_IRMSD_from_HADDOCKfiles.ipynb).
-
- The output file Supplementary Table 3 Haddock score and IRMSD of docking models is [here](/outputs/3.1_IRMSD_HADDOCKscore_tableresults.xlsx)
-
-## 4.	Interface analysis of SecA/SP molecular docking models (with MAPIYA).
-
-In this step, we used MAPIYA. MAPIYA is a web server designed for analyzing the molecular structures of proteins and molecular complexes. It was employed to identify hydrogen bonds, salt bridges, and hydrophobic interactions (Badaczewska-Dawid et al., 2022). We registered only the interactions that are present in at least 3 models from the best cluster.
-
-SecA/signal peptide clusters used as an input for MAPIYA can be found [here](data/4_5_Input_clusters_for_PyDockEneRes_and_MAPIYA). The output file Table 1 MAPIYA results of interface contacts from seven SecA:signal peptide complexes is [here](outputs/Table1_MAPIYA_results.xlsx)
-
-## 5. Analysis of per-residue energy contribution
-
-Later on, we used PyDockEneRes web server to compute the energy contributions from each residue within the binding affinity of SecA/SP complexes (Romero-Durana et al., 2020). The PyDock Energy parameter is calculated for each amino acid from the SecA/SP complex, using a linear sum of energies from electrostatic, van der Waals, and desolvation interactions. Energies from every single intermolecular atom pair were computed. We calculated the mean energy value from all models in each cluster in order to select the strongest interactions.
-
-SecA/signal peptide clusters used as an input for PyDockEneRes can be found [here](data/4_5_Input_clusters_for_PyDockEneRes_and_MAPIYA). The output file Supplementary Table 4 Energy contribution from each signal peptide in the SecA/SP interface is [here](outputs/Supplementary_Table4.xlsx)
-
-
-We followed the same steps to compute the energy contribution from peptide residues in the PDB:2VDA structure. The latter results were used as a reference for the SecA/SP results obtained in the first part. This output file Supplementary Table 5 can be found [here](outputs/Supplementary_Table5.xlsx).
-
-
-
+---
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License — see [LICENSE](LICENSE).
 
+## Contact
 
+**Corresponding author:** Alberto Jesus Donayre-Torres — adonayre@utec.edu.pe
+CentroBIO Research Center, Universidad de Ingeniería y Tecnología (UTEC), Lima, Peru.

@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# Office temporary files
+~$*
+
+# Large data files — deposited at Zenodo (too large for GitHub)
+# 1.1_Secretome_EColi_GFFfile.gff  (49 MB)
+# 1.3_signalP_output.json           (24 MB)
+# 2_AlphaFold_Control_SPs_PDBs/
+# 2_AlphaFold_Toxin_SPs_PDBs/
+# 2.1_STRIDE_SecondaryStructure_results/
+# 4_5_Input_clusters_PyDockEneRes_MAPIYA/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Jupyter
+.virtual_documents/
