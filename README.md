@@ -1,6 +1,5 @@
 # Computational Pipeline for Identification of Secretory Peptides Interacting with SecA in *Escherichia coli*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > **"Computational pipeline for in silico identification of novel secretory peptides interacting with SecA in *Escherichia coli*"**
 > Jose M. Cisneros Mandujano, Arturo Nickolay Rojas-Tavara, Melissa Alegría-Arcos, Alberto Jesus Donayre-Torres
@@ -178,9 +177,6 @@ Large files (PDB models, STRIDE results, HADDOCK cluster PDBs, full GFF, SignalP
 
 ---
 
-## License
-
-MIT License — see [LICENSE](LICENSE).
 
 ## Contact
 
