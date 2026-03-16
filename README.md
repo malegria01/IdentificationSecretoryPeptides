@@ -163,7 +163,7 @@ jupyter notebook
 
 ## Data Availability
 
-Large files (PDB models, STRIDE results, HADDOCK cluster PDBs, full GFF, SignalP JSON) are deposited at Zenodo:
+Large files (PDB models, STRIDE results, HADDOCK cluster PDBs, SignalP JSON) are deposited at Zenodo:
 
 > Alegría-Arcos, M. et al. (2024). *Computational pipeline for identification of secretory peptides interacting with SecA in E. coli* [Data set]. Zenodo.
 > [https://doi.org/10.5281/zenodo.10971817](https://doi.org/10.5281/zenodo.10971817)
